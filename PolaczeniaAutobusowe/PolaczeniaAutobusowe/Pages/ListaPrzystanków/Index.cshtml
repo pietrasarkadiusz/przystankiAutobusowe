@@ -1,0 +1,58 @@
+﻿@page
+@model PolaczeniaAutobusowe.Pages.ListaPrzystanków.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Lista Przystanków</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-page="Create" class="btn btn-info">Dodaj nowy</a>
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model.Przystanek.Count == 0)
+        {
+            <p>Nie istnieje żaden przystanek.</p>
+        }
+        else
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Przystanek[0].Nazwa)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Przystanek)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Nazwa)
+                        </td>
+                        <td style="width:150px;">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                                    @*<i class="fas fa-edit"></i>*@
+                                </a>
+                                <a class="btn btn-success text-white" asp-page="Details" asp-route-Id="@item.Id">
+                                    @*<i class="far fa-list-alt"></i>*@
+                                </a>
+                                <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                                    @*<i class="fas fa-trash-alt"></i>*@
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

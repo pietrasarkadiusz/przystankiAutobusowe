@@ -1,0 +1,98 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Strona główna";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+    <div>
+        @if (Model.PrzystankiVM.Count == 0)
+        {
+            <br /><br /><br />
+            <form method="get">
+                <div class="border backgroundWhite">
+                    <br /><br />
+                    <div class="form-group row">
+                        <div class="col-2 offset-5" style="text-align:center">
+                            Skąd
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4 offset-4">
+                            @Html.Editor("Skad", new { htmlAttributes = new { @class = "form-control", placeholder = "nazwa przystanku" } })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-2 offset-5" style="text-align:center">
+                            Dokąd
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4 offset-4">
+                            @Html.Editor("Dokad", new { htmlAttributes = new { @class = "form-control", placeholder = "nazwa przystanku" } })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-2 offset-5">
+                            <div class="row" style="padding-top:10px; padding-right:15px;">
+                                <button type="submit" name="submit" value="Szukaj" class="btn btn-info form-control">
+                                    Szukaj
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @if (Model.skad != null && Model.dokad != null)
+            {
+                <a>Nie znaleziono żadnego połączenia</a>
+            }
+        }
+        else
+        {
+            <br /><br /><br />
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        <p>Skąd</p>
+                    </th>
+                    <th>
+                        <p>Godzina odjazdu</p>
+                    </th>
+                    <th>
+                        <p>Dni kursowania</p>
+                    </th>
+                    <th>
+                        <p>Dokąd</p>
+                    </th>
+                    <th>
+                        <p>Godzina przyjazdu</p>
+                    </th>
+                </tr>
+                @foreach (var item in Model.PrzystankiVM)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Skad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.GodzinaOdjazdu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.DniKursowania)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Dokad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.GodzinaPrzyjazdu)
+                        </td>
+      
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+
+
+

@@ -1,0 +1,105 @@
+﻿@page
+@model PolaczeniaAutobusowe.Pages.Szukaj.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div>
+    @if (Model.PrzystankiVM.Count == 0)
+    {
+    <form method="get">
+        <div class="border backgroundWhite">
+            <br /><br />
+            <div class="form-group row">
+                <div class="col-2 offset-5" style="text-align:center">
+                    Skąd
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    @Html.Editor("Skad", new { htmlAttributes = new { @class = "form-control", placeholder = "nazwa przystanku" } })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 offset-5" style="text-align:center">
+                    Dokąd
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    @Html.Editor("Dokad", new { htmlAttributes = new { @class = "form-control", placeholder = "nazwa przystanku" } })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 offset-5">
+                    <div class="row" style="padding-top:10px; padding-right:15px;">
+                        <button type="submit" name="submit" value="Szukaj" class="btn btn-info form-control">
+                            Szukaj
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    }
+    else
+    {
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    <p>Skąd</p>
+                </th>
+                <th>
+                    <p>Godzina odjazdu</p>
+                </th>
+                <th>
+                    <p>Dni kursowania</p>
+                </th>
+                <th>
+                    <p>Dokąd</p>
+                </th>
+                <th>
+                    <p>Godzina przyjazdu</p>
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.PrzystankiVM)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Skad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.GodzinaOdjazdu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.DniKursowania)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Dokad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.GodzinaPrzyjazdu)
+                    </td>
+                    <td style="width:150px;">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                                @*<i class="fas fa-edit"></i>*@
+                            </a>
+                            <a class="btn btn-success text-white" asp-page="Details" asp-route-Id="@item.Id">
+                                @*<i class="far fa-list-alt"></i>*@
+                            </a>
+                            <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                                @*<i class="fas fa-trash-alt"></i>*@
+                            </a>
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+
+

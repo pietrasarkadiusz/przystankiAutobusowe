@@ -1,0 +1,111 @@
+﻿@page
+@model PolaczeniaAutobusowe.Pages.Users.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form method="get" asp-page="Index">
+    <br /><br />
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Lista użytkowników</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-page="/Account/Register" asp-area="Identity" class="btn btn-info">
+                <i class="fas fa-plus"></i>&nbsp; Dodaj
+            </a>
+        </div>
+    </div>
+
+    <div class="border backgroundWhite">
+        <div style="height:60px;" class="container border border-secondary">
+            <div class="row">
+                <div class="col-11">
+                    <div class="row" style="padding-top:10px">
+                        <div class="col-3">
+                            @Html.Editor("searchImie", new { htmlAttributes = new { @class = "form-control", placeholder = "Imie..." } })
+                        </div>
+                        <div class="col-3">
+                            @Html.Editor("searchNazwisko", new { htmlAttributes = new { @class = "form-control", placeholder = "Nazwisko..." } })
+                        </div>
+                        <div class="col-3">
+                            @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "form-control", placeholder = "Email..." } })
+                        </div>
+                        <div class="col-3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="row" style="padding-top:10px; padding-right:15px;">
+                        <button type="submit" name="submit" value="Szukaj" class="btn btn-info form-control">Szukaj</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <br />
+        <div>
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.UsersListVM.ApplicationUserList[0].Imie)
+                    </th>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.UsersListVM.ApplicationUserList[0].Nazwisko)
+                    </th>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.UsersListVM.ApplicationUserList[0].Email)
+                    </th>
+                    <th>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.UsersListVM.ApplicationUserList)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Imie)
+                </td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(m => item.Nazwisko)
+                </td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(m => item.Email)
+                </td>
+                <td>
+                    <a asp-page="../ListaPolaczen/Index" asp-route-userId="@item.Id" style="text-decoration:none;">
+                    <img src="~/images/polaczenie.png" width="40" />&nbsp; Polaczenia
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+                }
+                <tr>
+                    <td colspan="7" class="text-right">
+                        <div page-model="@Model.UsersListVM.PagingInfo" asp-action="Index" page-class="btn border"
+                             page-class-normal="btn btn-light" page-class-selected="btn btn-info active" class="btn-group">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
+
+

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolaczeniaAutobusowe", "PolaczeniaAutobusowe\PolaczeniaAutobusowe.csproj", "{A1FED10C-6746-480C-B505-AB7ACE0F607E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1FED10C-6746-480C-B505-AB7ACE0F607E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1FED10C-6746-480C-B505-AB7ACE0F607E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1FED10C-6746-480C-B505-AB7ACE0F607E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1FED10C-6746-480C-B505-AB7ACE0F607E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05A507B7-1372-4396-BD5D-992CBD09F8F9}
+	EndGlobalSection
+EndGlobal

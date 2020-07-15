@@ -1,0 +1,89 @@
+﻿@page
+@model PolaczeniaAutobusowe.Pages.ListaPolaczen.IndexModel
+@using PolaczeniaAutobusowe.Utility
+
+@{
+    ViewData["Title"] = "ListaPrzystankow";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br />
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Lista Polaczeń</h2>
+        </div>
+        <div class="col-6 text-right">
+            @if (User.IsInRole(SD.CustomerEndUser))
+            {
+                <a asp-page="Create" class="btn btn-info">
+                    <i class="fas fa-plus"></i>&nbsp; Dodaj
+                </a>
+            }
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model.PrzystankiVM.Count == 0)
+        {
+            <p>Nie ma żadnych połączeń na liście.</p>
+        }
+        else
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        <p>Skąd</p>
+                    </th>
+                    <th>
+                        <p>Godzina odjazdu</p>
+                    </th>
+                    <th>
+                        <p>Dni kursowania</p>
+                    </th>
+                    <th>
+                        <p>Dokąd</p>
+                    </th>
+                    <th>
+                        <p>Godzina przyjazdu</p>
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.PrzystankiVM)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Skad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.GodzinaOdjazdu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.DniKursowania)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Dokad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.GodzinaPrzyjazdu)
+                        </td>
+                        <td style="width:150px;">
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-success text-white" asp-page="Details" asp-route-Id="@item.Id">
+                                    <i class="far fa-list-alt"></i>
+                                </a>
+                                <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

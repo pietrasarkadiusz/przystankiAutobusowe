@@ -1,0 +1,76 @@
+﻿@page
+@model PolaczeniaAutobusowe.Pages.Users.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Usuń użytkownika</h2>
+<br />
+<form method="post">
+    <input asp-for="ApplicationUser.Id" hidden />
+    <div class=" border  backgroundWhite">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Imie" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Imie" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Nazwisko" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Nazwisko" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Email" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Email" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.Adres" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.Adres" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="ApplicationUser.KodPocztowy" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="ApplicationUser.KodPocztowy" disabled class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackToListButton" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+

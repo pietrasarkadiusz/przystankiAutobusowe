@@ -1,0 +1,29 @@
+﻿@page
+@model PolaczeniaAutobusowe.Pages.ListaPrzystanków.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Usuń przystanek</h2>
+<br />
+<form method="post">
+    <input type="hidden" asp-for="Przystanek.Id" />
+    <div class="border backgroundWhite">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Przystanek.Nazwa"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Przystanek.Nazwa" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackTolistButton" />
+            </div>
+        </div>
+    </div>
+</form>
